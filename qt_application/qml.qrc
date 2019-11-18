@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>resources/doom_patrol_theme.mp3</file>
+        <file>resources/doom_patrol_img.jpeg</file>
+        <file>resources/beaming.gif</file>
+        <file>resources/play_button.png</file>
+    </qresource>
+</RCC>
