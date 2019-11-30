@@ -16,6 +16,11 @@ DEFINES += JUCE_APP_VERSION=1.0.0 \
            JUCE_STANDALONE_APPLICATION=1 \
            DEBUG=1
 
+android {
+DEFINES += JUCE_ANDROID=1 \
+           JUCE_ANDROID_API_VERSION=16
+}
+
 SOURCES += \
         juceapplication.cpp \
         main.cpp \
@@ -34,7 +39,7 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-macx: LIBS += -L$$OUT_PWD/../juce_library/ -ljuce_library
+LIBS += -L$$OUT_PWD/../juce_library/ -ljuce_library
 
 INCLUDEPATH += $$PWD/../juce_library
 DEPENDPATH += $$PWD/../juce_library
@@ -59,3 +64,19 @@ macx {
 HEADERS += \
     juceapplication.h \
     playeradapter.h
+
+android {
+DISTFILES += \
+    android/AndroidManifest.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew \
+    android/gradlew.bat \
+    android/res/values/libs.xml
+
+contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
+    ANDROID_PACKAGE_SOURCE_DIR = \
+        $$PWD/android
+}
+}

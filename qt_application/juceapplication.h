@@ -16,6 +16,7 @@ class JuceApplication : public QGuiApplication,
 {
 public:
     JuceApplication(int &argc, char **argv);
+    ~JuceApplication() override;
 
     //! \note Initialization of JUCEApplication and JUCE gui
     static void initJuce();
@@ -23,6 +24,7 @@ public:
     //! \note JUCEApplication implementation
     const String getApplicationName () override;
     const String getApplicationVersion () override;
+
     void shutdown () override;
     void initialise (const String &commandLineParameters) override;
 };

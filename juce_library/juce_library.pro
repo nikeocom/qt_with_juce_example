@@ -27,6 +27,16 @@ DEFINES += JUCE_APP_VERSION=1.0.0 \
            JUCE_USE_MP3AUDIOFORMAT=1 \
            DEBUG=1
 
+android {
+INCLUDEPATH += $$(ANDROID_NDK_ROOT)/sources/android/cpufeatures
+
+DEFINES += JUCE_ANDROID=1 \
+           JUCE_ANDROID_API_VERSION=16
+SOURCES += \
+        $$(ANDROID_NDK_ROOT)/sources/android/cpufeatures/cpu-features.c
+
+}
+
 SOURCES += \
         juceplayer.cpp \
 # Juce generated sources
